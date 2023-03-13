@@ -1,0 +1,13 @@
+14:00:26 **** Incremental Build of configuration Debug for project PseudoSistema ****
+make all 
+Building target: PseudoSistema
+Invoking: GCC C Linker
+gcc  -o "PseudoSistema" ./src/AlfonsoJosafatLopezJauregui_Mouse_PowerState.o ./src/mouserandom.o   
+/usr/bin/ld: ./src/mouserandom.o: in function `main':
+/home/encanis185/eclipse-workspace/PseudoSistema/Debug/../src/mouserandom.c:9: multiple definition of `main'; ./src/AlfonsoJosafatLopezJauregui_Mouse_PowerState.o:/home/encanis185/eclipse-workspace/PseudoSistema/Debug/../src/AlfonsoJosafatLopezJauregui_Mouse_PowerState.c:22: first defined here
+collect2: error: ld returned 1 exit status
+make: *** [makefile:43: PseudoSistema] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+
+14:00:27 Build Failed. 3 errors, 0 warnings. (took 1s.143ms)
+

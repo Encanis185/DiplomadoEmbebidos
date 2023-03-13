@@ -1,0 +1,4 @@
+config/PseudoSistemaDeArchivos/cdt.launchMode=run
+config/PseudoSistemaDeArchivos/cdt.toolChain.id=gcc-x86_64-/usr/bin/gcc
+config/PseudoSistemaDeArchivos/cdt.toolChain.type=org.eclipse.cdt.build.gcc
+eclipse.preferences.version=1

@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <linux/input.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#define MAX 100
+
+void s2RAM(){
+	FILE* fptr = fopen("/sys/power/state", "a+");
+		if (fptr == NULL){
+			printf("Something wrong happended... can't s2RAM");
+			return;
+		} else{
+			printf("Time to sleep Zzz");
+			sleep(5);
+			fputs("men", fptr);
+		}
+	return;
+}
+
+
+int main(int argc, char **argv) {
+	int fd;
+	struct input_event ev;
+	char* filename = argv[1];
+	FILE* fptr;
+	int count = 0;
+	char ch;
+	//char buffer[MAX];
+	//size_t numread;
+	char[100];
+	fptr =fopen(filename,"r");
+
+	fd = open(argv[1], O_RDONLY);
+
+
+	for(ch = getc(fptr); ch != EOF || count <100; ch = getc(fptr)){
+		count = count + 1;
+
+		if(count < 100){
+					printf("Conteo de bytes: %d\n",count);
+					read(fd, &ev, sizeof(struct input_event));
+					printf("############## Entry %d ##########\n", count);
+					printf("value=%u\n", ev.value);
+					printf("time=%li\n", ev.time.tv_sec);
+					printf("type=%u\n", ev.type);
+					printf("code=%u\n\n", ev.code);
+				}else break;
+	}
+	/*while((ch = fgetc(fptr)) != EOF){
+
+		numread = fread(buffer,sizeof(*buffer),100,fptr);
+
+		if(numread < 100){
+			printf("Conteo de bytes: %ld\n",numread);
+			read(fd, &ev, sizeof(struct input_event));
+			printf("############## Entry %ld ##########\n", numread);
+			printf("value=%u\n", ev.value);
+			printf("time=%li\n", ev.time.tv_sec);
+			printf("type=%u\n", ev.type);
+			printf("code=%u\n\n", ev.code);
+		}else break;
+	}*/
+	close(fd);
+	fclose(fptr);
+
+
+	return 0;
+}

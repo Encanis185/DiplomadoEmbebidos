@@ -1,0 +1,20 @@
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <unistd.h>
+
+void main(){
+	char *path = NULL; //char pointer(path) points to nothing
+
+	while(1) {
+		path=malloc(100); /*Receives a int value instead of a pointer
+							path has been allocated 100 bytes. The 100 bytes might contain garbage data
+							a good practice is use memset or calloc, so every byte is initialized
+							char ∗p = malloc (10);
+							memset(p,â€™\0â€™,10);
+						  */
+	    path = strdup("STRING");
+		path=NULL;
+	}
+
+}

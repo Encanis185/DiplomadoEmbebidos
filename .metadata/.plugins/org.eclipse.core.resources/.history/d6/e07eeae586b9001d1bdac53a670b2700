@@ -1,0 +1,36 @@
+/*
+ * LopezJaureguiAlfonsoJosafat_FileStats.c
+ *
+ *  Created on: Mar 2, 2023
+ *      Author: encanis185
+ */
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main(int argc, char *argv[]){
+	char* filename;
+	struct stat buffer;
+	int status;
+
+	if(!argc || argc < 2){
+		printf("Filename is requiered!\n");
+	}
+	else{
+		filename = argv[1];
+		int response = stat(filename, &buffer);
+
+		if(response != 0){
+			fprintf(stderr, "Error in file\n");
+			return response;
+		}
+		else{
+			printf("File description: \n");
+			printf("File type: %10.10s\n", buffer.st_mode);
+			printf("File size: %ld\n", buffer.st_size);
+		}
+	}
+
+	return 0;
+}

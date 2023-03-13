@@ -1,0 +1,15 @@
+12:11:59 **** Incremental Build of configuration Debug for project InformacionYManipulacionArchivos ****
+make all 
+Building file: ../src/LopezJaureguiAlfonsoJosafat_FileStats.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/LopezJaureguiAlfonsoJosafat_FileStats.d" -MT"src/LopezJaureguiAlfonsoJosafat_FileStats.o" -o "src/LopezJaureguiAlfonsoJosafat_FileStats.o" "../src/LopezJaureguiAlfonsoJosafat_FileStats.c"
+Finished building: ../src/LopezJaureguiAlfonsoJosafat_FileStats.c
+ 
+Building target: InformacionYManipulacionArchivos
+Invoking: GCC C Linker
+gcc  -o "InformacionYManipulacionArchivos" ./src/LopezJaureguiAlfonsoJosafat_FileStats.o   
+Finished building target: InformacionYManipulacionArchivos
+ 
+
+12:12:01 Build Finished. 0 errors, 0 warnings. (took 1s.318ms)
+

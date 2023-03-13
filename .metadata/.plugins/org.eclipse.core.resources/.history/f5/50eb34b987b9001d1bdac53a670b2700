@@ -1,0 +1,56 @@
+/*
+ * LopezJaureguiAlfonsoJosafat_FileStats.c
+ *
+ *  Created on: Mar 2, 2023
+ *      Author: encanis185
+ */
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <time.h>
+
+int main(int argc, char *argv[]){
+	char* filename;
+	struct stat buffer;
+	int status;
+    //Get time
+	struct tm * timeinfo = localtime(&buffer.st_ctime);
+	//Character count
+	FILE *fptr;
+	char ch;
+    int count=0;
+
+
+	if(!argc || argc < 2){
+		printf("Filename is requiered!\n");
+	}
+	else{
+		filename = argv[1];
+		int response = stat(filename, &buffer);
+		fptr = fopen(filename,"r");
+		if(response != 0){
+			fprintf(stderr, "Error in file\n");
+			return response;
+		}
+		else{
+			printf("File description: \n");
+			printf("File type and permissions: %10.10s\n", buffer.st_mode);
+			printf("File size: %ld\n", buffer.st_size);
+			printf("File owner: %-8d", buffer.st_uid);
+			printf("Creation date: %s", asctime(timeinfo));
+			if(fptr==NULL){
+				printf("Can't count characters ¿Are you sure it is a text file?\n");
+			}else{
+				do{
+					ch = fgetc(fptr);
+				    count++;
+				}while(ch!=EOF);
+				printf("Character count: %d", count);
+			}
+			printf("File INODE: %d", buffer.st_ino);
+		}
+	}
+
+	return 0;
+}
