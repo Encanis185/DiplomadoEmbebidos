@@ -162,7 +162,7 @@ int main(int argc,char *argv[],char **envp) {
 	char* command = argv[0];
 	char* argument;
 
-	printf("%s\n", command);
+	//printf("%s\n", command);
 	//printf("%s\n", argument);
 
 	if(!argc || argc > 2){
@@ -170,26 +170,37 @@ int main(int argc,char *argv[],char **envp) {
 			exit(1);
 		}
 
-	if (strcmp(command, "./sleep") == 0){ //Validate the given command.
+	if(strcmp(command, "./sleep") == 0){ //Validate the given command.
 		argument = argv[1];
 		toSleep(argument);
 		}
-	if (strcmp(command, "./mkdir") == 0){ //Validate the given command.
+	else if(strcmp(command, "./mkdir") == 0){ //Validate the given command.
 		argument = argv[1];
 		makedir(argument);
 		}
-	if (strcmp(command, "./uptime") == 0){ //Validate the given command.
-		getuptime();
+	else if(strcmp(command, "./uptime") == 0){ //Validate the given command.
+		if(argc > 1){
+			fprintf(stderr, "Error. Too many arguments.\n");
+	        exit(EXIT_FAILURE);
 		}
-	if (strcmp(command, "./cat") == 0){ //Validate the given command.
+		else
+			getuptime();
+		}
+	else if(strcmp(command, "./cat") == 0){ //Validate the given command.
 		argument = argv[1];
 		getcat(argument);
 		}
+	else{
+		printf("Error. No valid argument was provided.\n");
+		exit(EXIT_FAILURE);
+	}
 
 
 
-
+	/*
 	printf( "\nCommand-line arguments:\n" );
 	    for( int count = 0; count < argc; count++ )
 	        printf( "  argv[%d]   %s\n", count, argv[count] );
+	*/
+	return 0;
 }
