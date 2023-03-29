@@ -171,8 +171,15 @@ int main(int argc,char *argv[],char **envp) {
 		}
 
 	if(strcmp(command, "./sleep") == 0){ //Validate the given command.
-		argument = argv[1];
-		toSleep(argument);
+		if(argc != 2){
+			fprintf(stderr, "Error. Arguments.\n");
+	        exit(EXIT_FAILURE);
+			}
+			else{
+			argument = argv[1];
+			toSleep(argument);
+			}
+
 		}
 	else if(strcmp(command, "./mkdir") == 0){ //Validate the given command.
 		argument = argv[1];
